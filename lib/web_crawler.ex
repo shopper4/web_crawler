@@ -14,8 +14,7 @@ defmodule WebCrawler do
   def start(_type, _args) do
     children = [
       {WebCrawler.SiteGraph, name: WebCrawler.SiteGraph},
-      {Plug.Cowboy,
-       scheme: :http, plug: Router, options: [port: 3000]}
+      {Plug.Cowboy, scheme: :http, plug: Router, options: [port: 3000]}
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one)
